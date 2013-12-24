@@ -13,8 +13,8 @@ class MerchantRepository
 
   def parse_csv(file)
     array = []
-    CSV.foreach(file, :headers => true, :header_converters => :symbol) do |row|
-      array << Merchant.new(row[:id].to_i, row[:name], Time.parse(row[:created_at]), Time.parse(row[:updated_at]))
+    CSV.foreach(file, :headers => true, :header_converters => :symbol, :converters => :integer) do |row|
+      array << Merchant.new(row[:id], row[:name], Time.parse(row[:created_at]), Time.parse(row[:updated_at]))
     end
     array
   end

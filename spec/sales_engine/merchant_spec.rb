@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Merchant do
-  let(:merchant) { Merchant.new(1,'Schroeder-Jerde','2012-03-27 14:53:59 UTC','2012-03-27 14:53:59 UTC') }
+  let(:merchant) { Merchant.new(1,'Schroeder-Jerde','2012-03-27 14:53:59 UTC',Time.parse('2012-03-27 14:53:59 UTC')) }
 
   describe ".new" do
     it "creates a new Merchant" do
@@ -29,7 +29,7 @@ describe Merchant do
 
   describe "#updated_at" do
     it "returns the merchant updated_at" do
-      expect(merchant.updated_at).to eq('2012-03-27 14:53:59 UTC')
+      expect(merchant.updated_at).to eq(Time.new(2012,3,28,3,53,59).utc)
     end
   end
 end

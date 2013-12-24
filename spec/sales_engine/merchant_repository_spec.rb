@@ -17,7 +17,7 @@ describe MerchantRepository do
 
   describe "#find_by_id" do
     it "returns the Merchant instance with the given id" do
-      expect(merchant_repository.find_by_id('1')).to eq(merchant_repository.all.first)
+      expect(merchant_repository.find_by_id(1)).to eq(merchant_repository.all.first)
     end
   end
 end

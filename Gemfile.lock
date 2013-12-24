@@ -1,8 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    byebug (1.8.2)
+      columnize (~> 0.3.6)
+      debugger-linecache (~> 1.2.0)
     cane (2.6.1)
       parallel
+    columnize (0.3.6)
+    debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     parallel (0.9.1)
     rake (10.1.1)
@@ -29,6 +34,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   cane
   rake
   reek

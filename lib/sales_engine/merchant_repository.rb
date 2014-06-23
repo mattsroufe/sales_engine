@@ -1,7 +1,6 @@
 class MerchantRepository
-  attr_reader :all
 
-  def initialize
+  def all
     @all = parse_csv('data/merchants.csv')
   end
 

@@ -13,7 +13,7 @@ class InvoiceRepository
   def parse_csv(file)
     array = []
     CSV.foreach(file, :headers => true, :header_converters => :symbol, :converters => :integer) do |row|
-      array << Invoice.new(row[:id], row[:name], Time.parse(row[:created_at]), Time.parse(row[:updated_at]))
+      array << Invoice.new(row[:id], row[:customer_id], row[:merchant_id], row[:status], row[:created_at], row[:updated_at])
     end
     array
   end

@@ -1,7 +1,7 @@
 class MerchantRepository
 
   def all
-    @all = parse_csv('data/merchants.csv')
+    @all ||= parse_csv('data/merchants.csv')
   end
 
   def find_by_id(id)

@@ -8,13 +8,22 @@ class InvoiceRepository
     all.find { |invoice| invoice.id == id }
   end
 
+  def find_all_by_merchant_id(merchant_id)
+    all.select { |invoice| invoice.merchant_id == merchant_id }
+  end
+
   private
 
   def parse_csv(file)
-    array = []
-    CSV.foreach(file, :headers => true, :header_converters => :symbol, :converters => :integer) do |row|
-      array << Invoice.new(row[:id], row[:customer_id], row[:merchant_id], row[:status], row[:created_at], row[:updated_at])
-    end
-    array
+    CSV.foreach(file, :headers => true, :header_converters => :symbol, :converters => :integer).map do |row|
+      Invoice.new(
+        id:          row[:id],
+        customer_id: row[:customer_id],
+        merchant_id: row[:merchant_id],
+        status:      row[:status],
+        created_at:  Time.parse(row[:created_at]),
+        updated_at:  Time.parse(row[:updated_at])
+      )
+      end
   end
 end

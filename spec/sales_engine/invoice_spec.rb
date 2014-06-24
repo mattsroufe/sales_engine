@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Invoice do
-  let(:invoice) { Invoice.new(1, 2, 3, 'shipped', '2012-03-27 14:53:59 UTC', Time.parse('2012-03-27 14:53:59 UTC')) }
+  let(:invoice) { Invoice.new(id: 1, customer_id: 2, merchant_id: 3, status: 'shipped', created_at: '2012-03-27 14:53:59 UTC', updated_at: Time.parse('2012-03-27 14:53:59 UTC')) }
 
   describe ".new" do
     it "creates a new Invoice" do

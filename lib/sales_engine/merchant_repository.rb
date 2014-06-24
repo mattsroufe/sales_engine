@@ -1,4 +1,9 @@
 class MerchantRepository
+  attr_reader :engine
+
+  def initialize(engine)
+    @engine = engine
+  end
 
   def all
     @all ||= parse_csv('data/merchants.csv')
@@ -12,7 +17,7 @@ class MerchantRepository
 
   def parse_csv(file)
     CSV.read(file, :headers => true, :header_converters => :symbol, :converters => :integer).map do |row|
-      Merchant.new(row[:id], row[:name], Time.parse(row[:created_at]), Time.parse(row[:updated_at]))
+      Merchant.new(engine, row[:id], row[:name], Time.parse(row[:created_at]), Time.parse(row[:updated_at]))
     end
   end
 end

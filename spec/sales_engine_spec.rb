@@ -1,5 +1,5 @@
 describe SalesEngine do
-  let(:engine) { SalesEngine.new }
+  let(:engine) { build(:sales_engine) }
 
   describe ".new" do
     it "creates a new SalesEngine instance" do

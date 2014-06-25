@@ -9,6 +9,6 @@ class Merchant
   end
 
   def invoices
-    SalesEngine.instance.invoice_repository.find_all_by_merchant_id(id)
+    InvoiceRepository.instance.find_all_by_merchant_id(id)
   end
 end

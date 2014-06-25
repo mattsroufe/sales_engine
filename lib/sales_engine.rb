@@ -1,6 +1,7 @@
 require 'csv'
 require 'time'
 require 'byebug'
+require 'singleton'
 require_relative 'sales_engine/merchant'
 require_relative 'sales_engine/merchant_repository'
 require_relative 'sales_engine/invoice_repository'
@@ -23,10 +24,10 @@ class SalesEngine
   end
 
   def merchant_repository
-    @merchant_repository ||= MerchantRepository.new
+    MerchantRepository.instance
   end
 
   def invoice_repository
-    @invoice_repository ||= InvoiceRepository.new
+    InvoiceRepository.instance
   end
 end

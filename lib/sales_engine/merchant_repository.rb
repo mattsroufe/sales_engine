@@ -1,4 +1,5 @@
 class MerchantRepository
+  include Singleton
 
   def all
     @all ||= parse_csv('data/merchants.csv')

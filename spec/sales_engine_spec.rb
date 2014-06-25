@@ -6,7 +6,7 @@ describe SalesEngine do
       expect(engine).to be_an_instance_of SalesEngine
     end
 
-    it "raises an error if a SalesEngine instance already exist" do
+    it "raises an error if a SalesEngine instance already exists" do
       expect( -> { SalesEngine.new } ).to raise_error RuntimeError, 'SalesEngine instance already exists'
     end
   end

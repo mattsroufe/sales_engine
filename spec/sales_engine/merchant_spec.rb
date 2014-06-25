@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe Merchant do
-  let(:engine)   { SalesEngine.new }
-  let(:merchant) { Merchant.new(engine, 1,'Schroeder-Jerde','2012-03-27 14:53:59 UTC',Time.parse('2012-03-27 14:53:59 UTC')) }
+  let(:merchant) { Merchant.new(1,'Schroeder-Jerde','2012-03-27 14:53:59 UTC',Time.parse('2012-03-27 14:53:59 UTC')) }
 
   describe ".new" do
     it "creates a new Merchant" do

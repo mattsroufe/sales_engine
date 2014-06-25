@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe MerchantRepository do
-  let(:engine) { SalesEngine.new }
-  let(:merchant_repository) { engine.merchant_repository }
+  let(:merchant_repository) { SalesEngine.instance.merchant_repository }
 
   describe ".new" do
     it "creates a new MerchantRepository" do

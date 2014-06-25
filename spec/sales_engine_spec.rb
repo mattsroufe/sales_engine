@@ -1,9 +1,13 @@
 describe SalesEngine do
-  let(:engine) { build(:sales_engine) }
+  let(:engine) { SalesEngine.instance }
 
   describe ".new" do
     it "creates a new SalesEngine instance" do
       expect(engine).to be_an_instance_of SalesEngine
+    end
+
+    it "raises an error if a SalesEngine instance already exist" do
+      expect( -> { SalesEngine.new } ).to raise_error RuntimeError, 'SalesEngine instance already exists'
     end
   end
 

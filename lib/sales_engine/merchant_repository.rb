@@ -1,12 +1,8 @@
-class MerchantRepository
+class MerchantRepository < Repository
   include Singleton
 
   def all
     @all ||= parse_csv('data/merchants.csv')
-  end
-
-  def find_by_id(id)
-    all.find { |merchant| merchant.id == id }
   end
 
   private

@@ -11,6 +11,12 @@ describe MerchantRepository do
     end
   end
 
+  describe "#random" do
+    it "returns a random merchant" do
+      expect(subject.random).to be_an_instance_of Merchant
+    end
+  end
+
   describe "#find_by_id" do
     it "returns the Merchant instance with the given id" do
       expect(subject.find_by_id(1)).to eq(subject.all.first)

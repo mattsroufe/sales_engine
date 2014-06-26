@@ -11,6 +11,12 @@ describe InvoiceRepository do
     end
   end
 
+  describe "#random" do
+    it "returns a random invoice" do
+      expect(subject.random).to be_an_instance_of Invoice
+    end
+  end
+
   describe "#find_by_id" do
     it "returns the Invoice instance with the given id" do
       expect(subject.find_by_id(1)).to eq(subject.all.first)

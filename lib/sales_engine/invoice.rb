@@ -8,5 +8,6 @@ class Invoice
     @status = args[:status]
     @created_at = args[:created_at]
     @updated_at = args[:updated_at]
+    InvoiceRepository.instance.all << self
   end
 end

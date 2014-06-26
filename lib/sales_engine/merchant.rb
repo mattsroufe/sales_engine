@@ -6,6 +6,7 @@ class Merchant
     @name = name
     @created_at = created_at
     @updated_at = updated_at
+    MerchantRepository.instance.all << self
   end
 
   def invoices

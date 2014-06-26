@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Merchant do
-  let(:merchant) { Merchant.new(1,'Schroeder-Jerde','2012-03-27 14:53:59 UTC',Time.parse('2012-03-27 14:53:59 UTC')) }
+  let(:merchant) { build(:merchant) }
 
   describe ".new" do
     it "creates a new Merchant" do
@@ -17,25 +17,30 @@ describe Merchant do
 
   describe "#name" do
     it "returns the merchant name" do
-      expect(merchant.name).to eq('Schroeder-Jerde')
+      expect(merchant.name).to eq("Diaminx Corp")
     end
   end
 
   describe "#created_at" do
     it "returns the merchant created_at" do
-      expect(merchant.created_at).to eq('2012-03-27 14:53:59 UTC')
+      expect(merchant.created_at).to eq(Time.new(2014,6,1))
     end
   end
 
   describe "#updated_at" do
     it "returns the merchant updated_at" do
-      expect(merchant.updated_at).to eq(Time.new(2012,3,28,3,53,59).utc)
+      expect(merchant.updated_at).to eq(Time.new(2014,6,1))
     end
   end
 
   describe "#invoices" do
+    before do
+      InvoiceRepository.instance.all.clear
+      build(:invoice)
+    end
+
     it "return the invoices associated with the merchant" do
-      expect(merchant.invoices.count).to eq(59)
+      expect(merchant.invoices.count).to eq(1)
     end
   end
 end

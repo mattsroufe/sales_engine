@@ -2,12 +2,13 @@ require 'spec_helper'
 
 describe InvoiceRepository do
   subject { InvoiceRepository.instance }
+  before(:all) { build(:invoice) }
 
   it { should be_an_instance_of InvoiceRepository }
 
   describe "#all" do
     it "returns all invoices" do
-      expect(subject.all.count).to eq(4843)
+      expect(subject.all.count).to eq(1)
     end
   end
 
@@ -25,7 +26,7 @@ describe InvoiceRepository do
 
   describe "#find_all_by_merchant_id" do
     it "returns all invoices for the given merchant_id" do
-      expect(subject.find_all_by_merchant_id(1).count).to eq(59)
+      expect(subject.find_all_by_merchant_id(1).count).to eq(1)
     end
   end
 end

@@ -1,15 +1,25 @@
 class MerchantRepository < Repository
   include Singleton
 
-  def all
-    @all ||= parse_csv('data/merchants.csv')
+  attr_reader :all
+
+  def initialize
+    @all = []
+    @csv_data_loaded = false
   end
 
-  private
+  def find_by_name(name)
+    @all.detect { |merchant| merchant.name =~ /\A#{name}\z/i }
+  end
 
-  def parse_csv(file)
-    CSV.read(file, :headers => true, :header_converters => :symbol, :converters => :integer).map do |row|
+  def csv_data_loaded?
+    @csv_data_loaded
+  end
+
+  def load_csv_data
+    CSV.foreach('data/merchants.csv', :headers => true, :header_converters => :symbol, :converters => :integer) do |row|
       Merchant.new(row[:id], row[:name], Time.parse(row[:created_at]), Time.parse(row[:updated_at]))
-    end
+    end unless csv_data_loaded?
+    @csv_data_loaded = true
   end
 end

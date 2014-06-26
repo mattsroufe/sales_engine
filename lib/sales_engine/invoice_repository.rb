@@ -1,8 +1,10 @@
 class InvoiceRepository < Repository
   include Singleton
 
-  def all
-    @all ||= parse_csv('data/invoices.csv')
+  attr_reader :all
+
+  def initialize
+    @all = []
   end
 
   def find_all_by_merchant_id(merchant_id)
@@ -11,8 +13,8 @@ class InvoiceRepository < Repository
 
   private
 
-  def parse_csv(file)
-    CSV.foreach(file, :headers => true, :header_converters => :symbol, :converters => :integer).map do |row|
+  def parse_csv
+    CSV.foreach('data/invoices.csv', :headers => true, :header_converters => :symbol, :converters => :integer) do |row|
       Invoice.new(
         id:          row[:id],
         customer_id: row[:customer_id],

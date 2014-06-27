@@ -5,6 +5,6 @@ FactoryGirl.define do
     created_at Time.new(2014, 6, 1)
     updated_at Time.new(2014, 6, 1)
 
-    initialize_with { new(id, name, created_at, updated_at) }
+    initialize_with { new(attributes) }
   end
 end

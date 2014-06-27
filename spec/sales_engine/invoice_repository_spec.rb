@@ -2,9 +2,23 @@ require 'spec_helper'
 
 describe InvoiceRepository do
   subject { InvoiceRepository.instance }
-  before(:all) { build(:invoice) }
+
+  before do
+    subject.all.clear
+    build(:invoice)
+  end
 
   it { should be_an_instance_of InvoiceRepository }
+
+  describe "#load_csv_data" do
+    let(:data) { "id,customer_id,merchant_id,status,created_at,updated_at\r1,1,26,shipped,2012-03-25 09:54:09 UTC,2012-03-25 09:54:09 UTC" }
+    let(:options) { {universal_newline: false, headers: true, header_converters: :symbol, converters: :integer} }
+
+    it "loads data from csv file" do
+      allow(File).to receive(:open).with(subject.class::CSV_DATA_FILE, options).and_return(StringIO.new(data))
+      expect{subject.load_csv_data}.to change{subject.all.count}.by(1)
+    end
+  end
 
   describe "#all" do
     it "returns all invoices" do

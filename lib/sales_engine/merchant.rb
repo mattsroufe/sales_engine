@@ -12,4 +12,8 @@ class Merchant
   def invoices
     InvoiceRepository.instance.find_all_by_merchant_id(id)
   end
+
+  def items
+    ItemRepository.instance.find_all_by_merchant_id(id)
+  end
 end

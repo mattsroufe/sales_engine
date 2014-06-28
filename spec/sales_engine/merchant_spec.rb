@@ -39,8 +39,19 @@ describe Merchant do
       build(:invoice)
     end
 
-    it "return the invoices associated with the merchant" do
+    it "returns the invoices associated with the merchant" do
       expect(merchant.invoices.count).to eq(1)
+    end
+  end
+
+  describe "#items" do
+    before do
+      ItemRepository.instance.all.clear
+      build(:item)
+    end
+
+    it "returns the items associated with the merchant" do
+      expect(merchant.items.count).to eq(1)
     end
   end
 end

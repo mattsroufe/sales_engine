@@ -1,4 +1,5 @@
 class Merchant
+  include SalesEngineFinder
   attr_reader :id, :name, :created_at, :updated_at
 
   def initialize(args = {})
@@ -9,10 +10,6 @@ class Merchant
     @created_at = args[:created_at]
     @updated_at = args[:updated_at]
     repository.all << self
-  end
-
-  def sales_engine
-    ObjectSpace._id2ref(@sales_engine_id)
   end
 
   def invoices

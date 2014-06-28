@@ -1,4 +1,5 @@
 module Repository
+  include SalesEngineFinder
   attr_reader :sales_engine_id, :all
 
   def initialize(sales_engine = SalesEngine.new)

@@ -6,12 +6,13 @@ require_relative 'sales_engine/repository'
 require_relative 'sales_engine/merchant'
 require_relative 'sales_engine/merchant_repository'
 require_relative 'sales_engine/invoice_repository'
+require_relative 'sales_engine/item_repository'
 require_relative 'sales_engine/invoice'
 
 class SalesEngine
   @@instance = nil
 
-  REPOSITORIES = [MerchantRepository, InvoiceRepository]
+  REPOSITORIES = [MerchantRepository, InvoiceRepository, ItemRepository]
 
   REPOSITORIES.each do |repository|
     define_method(repository.to_s.scan(/[A-Z][a-z]*/).join('_').downcase) { repository.instance }

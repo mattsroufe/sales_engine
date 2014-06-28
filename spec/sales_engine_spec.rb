@@ -24,4 +24,10 @@ describe SalesEngine do
       expect(engine.item_repository).to be_an_instance_of ItemRepository
     end
   end
+
+  describe "#customer_repository" do
+    it "returns an instance of CustomerRepository" do
+      expect(engine.customer_repository).to be_an_instance_of CustomerRepository
+    end
+  end
 end

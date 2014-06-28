@@ -1,5 +1,4 @@
 class InvoiceRepository
-  include Singleton
   include Repository
 
   CSV_DATA_FILE = 'data/invoices.csv'

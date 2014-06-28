@@ -1,5 +1,4 @@
 class MerchantRepository
-  include Singleton
   include Repository
 
   CSV_DATA_FILE = 'data/merchants.csv'

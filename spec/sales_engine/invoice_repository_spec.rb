@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe InvoiceRepository do
-  subject { InvoiceRepository.instance }
+  subject { InvoiceRepository.new }
 
   before do
-    subject.all.clear
-    build(:invoice)
+    build(:invoice, repository: subject)
   end
 
   it { should be_an_instance_of InvoiceRepository }

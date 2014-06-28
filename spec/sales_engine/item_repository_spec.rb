@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe ItemRepository do
-  subject { ItemRepository.instance }
+  subject { ItemRepository.new }
 
   before do
-    subject.all.clear
-    build(:item)
-    build(:item, merchant_id: 2)
+    build(:item, repository: subject)
+    build(:item, repository: subject, merchant_id: 2)
   end
 
   it { should be_an_instance_of ItemRepository }

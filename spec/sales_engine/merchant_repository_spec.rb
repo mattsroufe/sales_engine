@@ -1,11 +1,10 @@
 require 'spec_helper'
 
 describe MerchantRepository do
-  subject { MerchantRepository.instance }
+  subject { MerchantRepository.new }
 
   before do
-    subject.all.clear
-    build(:merchant)
+    build(:merchant, repository: subject)
   end
 
   it { should be_an_instance_of MerchantRepository }

@@ -11,6 +11,12 @@ require_relative 'sales_engine/invoice'
 class SalesEngine
   @@instance = nil
 
+  REPOSITORIES = [MerchantRepository, InvoiceRepository]
+
+  REPOSITORIES.each do |repository|
+    define_method(repository.to_s.scan(/[A-Z][a-z]*/).join('_').downcase) { repository.instance }
+  end
+
   def initialize
     raise 'SalesEngine instance already exists' unless @@instance.nil?
     @@instance = self
@@ -21,14 +27,8 @@ class SalesEngine
   end
 
   def startup
-    true
-  end
-
-  def merchant_repository
-    MerchantRepository.instance
-  end
-
-  def invoice_repository
-    InvoiceRepository.instance
+    REPOSITORIES.each do |repository|
+      repository.instance.load_csv_data
+    end
   end
 end

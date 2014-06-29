@@ -2,8 +2,7 @@ class Merchant
   include SalesEngineFinder
   attr_reader :id, :name, :created_at, :updated_at
 
-  def initialize(args = {})
-    repository = args[:repository] || MerchantRepository.new
+  def initialize(repository: MerchantRepository.new, **args)
     @id = args[:id]
     @name = args[:name]
     @sales_engine_id = repository.sales_engine_id

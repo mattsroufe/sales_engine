@@ -2,8 +2,7 @@ class Item
   include SalesEngineFinder
   attr_reader :id, :name, :description, :unit_price, :merchant_id, :created_at, :updated_at
 
-  def initialize(args = {})
-    repository = args[:repository] || ItemRepository.new
+  def initialize(repository: ItemRepository.new, **args)
     @id = args[:id]
     @name = args[:name]
     @description = args[:description]

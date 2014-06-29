@@ -42,4 +42,18 @@ describe InvoiceRepository do
       expect(subject.find_all_by_merchant_id(1).count).to eq(1)
     end
   end
+
+  describe "#create" do
+    let(:customer) { build(:customer) }
+    let(:merchant) { build(:merchant) }
+    let(:item1) { build(:item) }
+    let(:item2) { build(:item2) }
+    let(:item3) { build(:item3) }
+
+    it "creates new invoices" do
+      expect {
+        subject.create(customer: customer, merchant: merchant, status: "shipped", items: [item1, item2, item3])
+      }.to change { subject.all.count }.by(1)
+    end
+  end
 end

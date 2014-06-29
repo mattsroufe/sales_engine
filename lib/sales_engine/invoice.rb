@@ -3,7 +3,7 @@ class Invoice
   attr_reader :id, :customer_id, :merchant_id, :status, :created_at, :updated_at
 
   def initialize(repository: InvoiceRepository.new, **args)
-    @id = args[:id]
+    @id = repository.all.count + 1
     @customer_id = args[:customer_id]
     @merchant_id = args[:merchant_id]
     @status = args[:status]

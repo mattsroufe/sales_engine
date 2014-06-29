@@ -8,14 +8,16 @@ require_relative 'sales_engine/customer'
 require_relative 'sales_engine/customer_repository'
 require_relative 'sales_engine/merchant_repository'
 require_relative 'sales_engine/invoice_repository'
+require_relative 'sales_engine/invoice_item_repository'
 require_relative 'sales_engine/item_repository'
 require_relative 'sales_engine/item'
 require_relative 'sales_engine/invoice'
+require_relative 'sales_engine/invoice_item'
 
 class SalesEngine
   attr_reader :repositories
 
-  REPOSITORIES = [MerchantRepository, InvoiceRepository, ItemRepository, CustomerRepository]
+  REPOSITORIES = [MerchantRepository, InvoiceRepository, ItemRepository, CustomerRepository, InvoiceItemRepository]
 
   REPOSITORIES.each do |klass|
     define_method(klass.to_s.scan(/[A-Z][a-z]*/).join('_').downcase) do

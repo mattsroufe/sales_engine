@@ -2,7 +2,8 @@ module Repository
   include SalesEngineFinder
   attr_reader :sales_engine_id, :all
 
-  def initialize(sales_engine = SalesEngine.new)
+  def initialize(sales_engine = nil)
+    sales_engine = SalesEngine.new(self) if sales_engine.nil?
     @sales_engine_id = sales_engine.object_id
     @all = []
     @csv_data_loaded = false

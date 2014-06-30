@@ -13,7 +13,7 @@ class InvoiceRepository
       updated_at: Time.now
     )
     args[:items].each do |item|
-      sales_engine.invoice_item_repository.all << InvoiceItem.new(
+      invoice_item_repository.all << InvoiceItem.new(
         item_id: item.id,
         invoice_id: invoice.id,
         quantity: 1,

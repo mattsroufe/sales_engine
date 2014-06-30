@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe InvoiceRepository do
-  let(:engine) { SalesEngine.new }
-  subject { engine.invoice_repository }
+  subject { SalesEngine.new.invoice_repository }
 
   before do
     subject.all << build(:invoice)
@@ -60,7 +59,7 @@ describe InvoiceRepository do
     it "creates new invoice items" do
       expect {
         subject.create(customer: customer, merchant: merchant, status: "shipped", items: [item1, item2, item3])
-      }.to change { engine.invoice_item_repository.all.count }.by(3)
+      }.to change { subject.invoice_item_repository.all.count }.by(3)
     end
   end
 end

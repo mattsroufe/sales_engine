@@ -5,7 +5,7 @@ describe InvoiceRepository do
   subject { engine.invoice_repository }
 
   before do
-    build(:invoice, repository: subject)
+    subject.all << build(:invoice)
   end
 
   it { should be_an_instance_of InvoiceRepository }

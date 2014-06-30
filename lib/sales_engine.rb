@@ -25,10 +25,10 @@ class SalesEngine
     end
   end
 
-  def initialize(repository = nil)
+  def initialize
     @repositories = []
     REPOSITORIES.each do |klass|
-      klass.new(self) unless repository.class == klass
+      @repositories << klass.new(self.object_id)
     end
   end
 

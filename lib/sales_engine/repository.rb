@@ -2,12 +2,10 @@ module Repository
   include SalesEngineFinder
   attr_reader :sales_engine_id, :all
 
-  def initialize(sales_engine = nil)
-    sales_engine = SalesEngine.new(self) if sales_engine.nil?
-    @sales_engine_id = sales_engine.object_id
+  def initialize(sales_engine_id = nil)
+    @sales_engine_id = sales_engine_id
     @all = []
     @csv_data_loaded = false
-    sales_engine.repositories << self
   end
 
   def csv_data_loaded?
@@ -18,8 +16,8 @@ module Repository
     CSV.foreach(self.class::CSV_DATA_FILE, headers: true, header_converters: :symbol, converters: :integer) do |row|
       row[:created_at] = Time.parse(row[:created_at])
       row[:updated_at] = Time.parse(row[:updated_at])
-      row[:repository] = self
-      Object.const_get(self.class.to_s.gsub('Repository', '')).new(row)
+      row[:sales_engine_id] = self.sales_engine_id
+      all << Object.const_get(self.class.to_s.gsub('Repository', '')).new(row)
     end unless csv_data_loaded?
     @csv_data_loaded = true
   end

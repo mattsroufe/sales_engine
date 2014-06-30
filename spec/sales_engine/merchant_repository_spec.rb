@@ -4,7 +4,7 @@ describe MerchantRepository do
   subject { MerchantRepository.new }
 
   before do
-    build(:merchant, repository: subject)
+    subject.all << build(:merchant)
   end
 
   it { should be_an_instance_of MerchantRepository }

@@ -4,8 +4,8 @@ describe ItemRepository do
   subject { ItemRepository.new }
 
   before do
-    build(:item, repository: subject)
-    build(:item, repository: subject, merchant_id: 2)
+    subject.all << build(:item)
+    subject.all << build(:item, merchant_id: 2)
   end
 
   it { should be_an_instance_of ItemRepository }

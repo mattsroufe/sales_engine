@@ -4,7 +4,7 @@ describe CustomerRepository do
   subject { CustomerRepository.new }
 
   before do
-    build(:customer, repository: subject)
+    subject.all << build(:customer)
   end
 
   it { should be_an_instance_of CustomerRepository }
@@ -20,7 +20,7 @@ describe CustomerRepository do
   end
 
   describe "#all" do
-    it "returns all merchants" do
+    it "returns all customers" do
       expect(subject.all.count).to eq(1)
     end
   end

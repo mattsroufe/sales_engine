@@ -3,7 +3,7 @@ class InvoiceRepository < Repository
   CSV_DATA_FILE = 'data/invoices.csv'
 
   def create(args = {})
-    all << invoice = Invoice.new(
+    self << invoice = Invoice.new(
       reposoitory: self,
       customer_id: args[:customer].id,
       merchant_id: args[:merchant].id,
@@ -12,7 +12,7 @@ class InvoiceRepository < Repository
       updated_at:  Time.now
     )
     args[:items].each do |item|
-      invoice_item_repository.all << InvoiceItem.new(
+      invoice_item_repository << InvoiceItem.new(
         repository: invoice_item_repository,
         item_id:    item.id,
         invoice_id: invoice.id,
@@ -25,6 +25,6 @@ class InvoiceRepository < Repository
   end
 
   def find_all_by_merchant_id(merchant_id)
-    all.select { |invoice| invoice.merchant_id == merchant_id }
+    select { |invoice| invoice.merchant_id == merchant_id }
   end
 end

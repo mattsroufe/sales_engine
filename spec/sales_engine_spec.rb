@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe SalesEngine do
   let(:engine) { SalesEngine.new }
 

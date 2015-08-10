@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe MerchantRepository do
-  subject { MerchantRepository.new }
+  subject { MerchantRepository.new(double) }
 
   before do
     subject.all << build(:merchant)
@@ -9,19 +9,9 @@ describe MerchantRepository do
 
   it { should be_an_instance_of MerchantRepository }
 
-  describe "#load_csv_data" do
-    let(:data) { "id,name,created_at,updated_at\r1,Schroeder-Jerde,2012-03-27 14:53:59 UTC,2012-03-27 14:53:59 UTC"}
-    let(:options) { {universal_newline: false, headers: true, header_converters: :symbol, converters: :integer} }
-
-    it "loads data from csv file" do
-      allow(File).to receive(:open).with(subject.class::CSV_DATA_FILE, options).and_return(StringIO.new(data))
-      expect{subject.load_csv_data}.to change{subject.all.count}.by(1)
-    end
-  end
-
   describe "#all" do
     it "returns all merchants" do
-      expect(subject.all.count).to eq(1)
+      expect(subject.all.count).to eq(101)
     end
   end
 

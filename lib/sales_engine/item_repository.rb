@@ -1,5 +1,4 @@
-class ItemRepository
-  include Repository
+class ItemRepository < Repository
 
   CSV_DATA_FILE = 'data/items.csv'
 

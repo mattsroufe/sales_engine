@@ -1,5 +1,4 @@
-class MerchantRepository
-  include Repository
+class MerchantRepository < Repository
 
   CSV_DATA_FILE = 'data/merchants.csv'
 

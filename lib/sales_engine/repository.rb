@@ -5,11 +5,6 @@ module Repository
   def initialize(sales_engine_id = nil)
     @sales_engine_id = sales_engine_id
     @all = []
-    @csv_data_loaded = false
-  end
-
-  def csv_data_loaded?
-    @csv_data_loaded
   end
 
   def load_csv_data
@@ -18,7 +13,7 @@ module Repository
       row[:updated_at] = Time.parse(row[:updated_at])
       row[:sales_engine_id] = self.sales_engine_id
       all << Object.const_get(self.class.to_s.gsub('Repository', '')).new(row)
-    end unless csv_data_loaded?
+    end
     @csv_data_loaded = true
   end
 

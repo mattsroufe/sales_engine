@@ -6,7 +6,7 @@ class Repository
   attr_reader :sales_engine, :all
 
   def_delegators :@sales_engine, :customer_repository, :invoice_item_repository, :invoice_repository, :item_repository, :merchant_repository
-  def_delegators :@all, :count, :<<, :sample, :select, :detect, :find
+  def_delegators :@all, :count, :[], :<<, :sample, :select, :detect, :find
 
   def initialize(sales_engine, data = File.read(self.class::CSV_DATA_FILE))
     @sales_engine = sales_engine

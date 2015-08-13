@@ -9,4 +9,6 @@ require 'factories/items'
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods
+  config.color = true
+  config.formatter = :documentation
 end

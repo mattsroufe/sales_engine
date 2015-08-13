@@ -1,17 +1,20 @@
 require 'delegate'
 
-class Repository
+class Repository < SimpleDelegator
   extend Forwardable
 
-  attr_reader :sales_engine, :all
+  attr_reader :sales_engine
 
   def_delegators :@sales_engine, :customer_repository, :invoice_item_repository, :invoice_repository, :item_repository, :merchant_repository
-  def_delegators :@all, :count, :[], :<<, :sample, :select, :detect, :find
 
-  def initialize(sales_engine, data = DATA[self.class.to_s.gsub('Repository', '')][SALES_ENGINE_ENV])
+  def initialize(sales_engine, data = DATA[self.class.name][SALES_ENGINE_ENV])
     @sales_engine = sales_engine
-    @all = []
+    super([])
     load_csv_data(data)
+  end
+
+  def all
+    self
   end
 
   def random
@@ -23,7 +26,7 @@ class Repository
   end
 
   def inspect
-    ObjectSpace._id2ref(object_id).to_s
+    ObjectSpace._id2ref(self.object_id).to_s
   end
 
   private
@@ -33,7 +36,7 @@ class Repository
       row[:created_at] = Time.parse(row[:created_at])
       row[:updated_at] = Time.parse(row[:updated_at])
       row[:repository] = self
-      @all << Object.const_get(self.class.to_s.gsub('Repository', '')).new(row)
+      self << Object.const_get(self.class.to_s.gsub('Repository', '')).new(row)
     end
   end
 end

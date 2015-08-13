@@ -2,7 +2,7 @@ SALES_ENGINE_ENV ||= 'development'
 
 DATA = {
 
-  'Customer' => {
+  'CustomerRepository' => {
     'development' => File.read('data/customers.csv'),
     'test' =>
 %q{id,first_name,last_name,created_at,updated_at
@@ -11,7 +11,7 @@ DATA = {
 3,Mariah,Toy,2012-03-27 14:54:10 UTC,2012-03-27 14:54:10 UTC}
   },
 
-  'Invoice' => {
+  'InvoiceRepository' => {
     'development' => File.read('data/invoices.csv'),
     'test' =>
 %q{id,customer_id,merchant_id,status,created_at,updated_at
@@ -20,7 +20,7 @@ DATA = {
 3,1,78,shipped,2012-03-10 00:54:09 UTC,2012-03-10 00:54:09 UTC}
   },
 
-  'Item' => {
+  'ItemRepository' => {
     'development' => File.read('data/items.csv'),
     'test' =>
 %q{id,name,description,unit_price,merchant_id,created_at,updated_at
@@ -29,7 +29,7 @@ DATA = {
 3,Item Adipisci Sint,Iure cumque laborum hic autem quidem voluptas. Quis eum adipisci neque magnam. Commodi molestiae exercitationem.,22951,2,2012-03-27 14:53:59 UTC,2012-03-27 14:53:59 UTC}
   },
 
-  'Merchant' => {
+  'MerchantRepository' => {
     'development' => File.read('data/merchants.csv'),
     'test' =>
 %q{id,name,created_at,updated_at

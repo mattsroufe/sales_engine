@@ -37,7 +37,7 @@ describe Merchant do
     it "returns the invoices associated with the merchant" do
       engine = SalesEngine.new
       engine.invoice_repository.all << build(:invoice)
-      expect(build(:merchant, repository: engine.merchant_repository).invoices.count).to eq(60)
+      expect(build(:merchant, repository: engine.merchant_repository).invoices.count).to eq(1)
     end
   end
 
@@ -45,7 +45,7 @@ describe Merchant do
     it "returns the items associated with the merchant" do
       engine = SalesEngine.new
       engine.item_repository.all << build(:item, sales_engine_id: engine.object_id)
-      expect(build(:merchant, repository: engine.merchant_repository).items.count).to eq(16)
+      expect(build(:merchant, repository: engine.merchant_repository).items.count).to eq(3)
     end
   end
 end

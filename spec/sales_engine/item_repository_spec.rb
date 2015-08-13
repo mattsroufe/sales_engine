@@ -7,7 +7,7 @@ describe ItemRepository do
 
   describe "#all" do
     it "returns all items" do
-      expect(subject.all.count).to eq(2483)
+      expect(subject.all.count).to eq(3)
     end
   end
 
@@ -25,7 +25,7 @@ describe ItemRepository do
 
   describe "#find_all_by_merchant_id" do
     it "returns all items for the given merchant_id" do
-      expect(subject.find_all_by_merchant_id(1).count).to eq(15)
+      expect(subject.find_all_by_merchant_id(1).count).to eq(2)
     end
   end
 end

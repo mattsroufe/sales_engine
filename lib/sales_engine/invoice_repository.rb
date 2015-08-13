@@ -1,7 +1,5 @@
 class InvoiceRepository < Repository
 
-  CSV_DATA_FILE = 'data/invoices.csv'
-
   def create(args = {})
     self << invoice = Invoice.new(
       reposoitory: self,

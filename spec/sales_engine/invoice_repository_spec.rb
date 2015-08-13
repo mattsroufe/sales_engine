@@ -5,12 +5,7 @@ describe InvoiceRepository do
 
   before(:all) do
     sales_engine = OpenStruct.new(invoice_item_repository: [])
-    data =
-%q{id,customer_id,merchant_id,status,created_at,updated_at
-1,1,26,shipped,2012-03-25 09:54:09 UTC,2012-03-25 09:54:09 UTC
-2,1,75,shipped,2012-03-12 05:54:09 UTC,2012-03-12 05:54:09 UTC
-3,1,78,shipped,2012-03-10 00:54:09 UTC,2012-03-10 00:54:09 UTC}
-    @invoice_repository = InvoiceRepository.new(sales_engine, data)
+    @invoice_repository = InvoiceRepository.new(sales_engine)
   end
 
   subject { @invoice_repository }

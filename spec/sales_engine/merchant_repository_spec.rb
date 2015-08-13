@@ -11,7 +11,7 @@ describe MerchantRepository do
 
   describe "#all" do
     it "returns all merchants" do
-      expect(subject.all.count).to eq(101)
+      expect(subject.all.count).to eq(4)
     end
   end
 

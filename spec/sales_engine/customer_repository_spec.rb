@@ -3,12 +3,7 @@ require 'spec_helper'
 describe CustomerRepository do
 
   before(:all) do
-    data =
-%q{id,first_name,last_name,created_at,updated_at
-1,Joey,Ondricka,2012-03-27 14:54:09 UTC,2012-03-27 14:54:09 UTC
-2,Cecelia,Osinski,2012-03-27 14:54:10 UTC,2012-03-27 14:54:10 UTC
-3,Mariah,Toy,2012-03-27 14:54:10 UTC,2012-03-27 14:54:10 UTC}
-    @customer_repository = CustomerRepository.new(nil, data)
+    @customer_repository = CustomerRepository.new(nil)
   end
 
   subject { @customer_repository }

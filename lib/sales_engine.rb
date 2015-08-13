@@ -1,6 +1,7 @@
 require 'csv'
 require 'time'
 require 'byebug'
+require_relative 'config'
 require_relative 'sales_engine/repository'
 require_relative 'sales_engine/repository_object'
 require_relative 'sales_engine/merchant'

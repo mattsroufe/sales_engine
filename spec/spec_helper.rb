@@ -1,3 +1,5 @@
+SALES_ENGINE_ENV ||= 'test'
+
 require 'sales_engine'
 require 'factory_girl'
 require 'factories/merchants'

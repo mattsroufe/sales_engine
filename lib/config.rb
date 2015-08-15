@@ -29,6 +29,15 @@ DATA = {
 3,Item Adipisci Sint,Iure cumque laborum hic autem quidem voluptas. Quis eum adipisci neque magnam. Commodi molestiae exercitationem.,22951,2,2012-03-27 14:53:59 UTC,2012-03-27 14:53:59 UTC}
   },
 
+  'InvoiceItemRepository' => {
+    'development' => File.read('data/invoice_items.csv'),
+    'test' =>
+%q{id,item_id,invoice_id,quantity,unit_price,created_at,updated_at
+1,539,1,5,13635,2012-03-27 14:54:09 UTC,2012-03-27 14:54:09 UTC
+2,528,1,9,23324,2012-03-27 14:54:09 UTC,2012-03-27 14:54:09 UTC
+3,523,1,8,34873,2012-03-27 14:54:09 UTC,2012-03-27 14:54:09 UTC}
+  },
+
   'MerchantRepository' => {
     'development' => File.read('data/merchants.csv'),
     'test' =>

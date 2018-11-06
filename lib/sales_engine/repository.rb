@@ -25,10 +25,6 @@ class Repository < SimpleDelegator
     find { |object| object.id == id }
   end
 
-  def inspect
-    ObjectSpace._id2ref(self.object_id).to_s
-  end
-
   private
 
   def load_csv_data(data)

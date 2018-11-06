@@ -1,4 +1,4 @@
-class Merchant < RepositoryObject
+class Merchant
   extend Forwardable
 
   attr_reader :id, :name, :created_at, :updated_at

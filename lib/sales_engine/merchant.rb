@@ -1,23 +1,18 @@
-class Merchant
-  extend Forwardable
-
-  attr_reader :id, :name, :created_at, :updated_at
-
-  def_delegators :@repository, :invoice_repository, :item_repository
-
-  def initialize(args = {})
-    @repository = args[:repository]
-    @id         = args[:id]
-    @name       = args[:name]
-    @created_at = args[:created_at]
-    @updated_at = args[:updated_at]
-  end
+Merchant = Struct.new(
+  :id,
+  :name,
+  :created_at,
+  :updated_at,
+  :find_all_invoices_by_merchant_id,
+  :find_all_items_by_merchant_id,
+  keyword_init: true
+) do
 
   def invoices
-    invoice_repository.find_all_by_merchant_id(id)
+    find_all_invoices_by_merchant_id.call(id)
   end
 
   def items
-    item_repository.find_all_by_merchant_id(id)
+    find_all_items_by_merchant_id.call(id)
   end
 end

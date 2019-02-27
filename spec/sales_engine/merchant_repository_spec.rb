@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe MerchantRepository do
-  subject { MerchantRepository.new(double) }
+  subject { MerchantRepository.new }
 
   before do
     subject.all << build(:merchant)
@@ -11,7 +11,7 @@ describe MerchantRepository do
 
   describe "#all" do
     it "returns all merchants" do
-      expect(subject.all.count).to eq(4)
+      expect(subject.all.count).to eq(1)
     end
   end
 

@@ -33,7 +33,7 @@ class SalesEngine
   end
 
   def merchant_repository
-    @merchant_repository ||= MerchantRepository.new(self)
+    @merchant_repository ||= MerchantRepository.new(invoice_repository, item_repository)
   end
 
   def startup
